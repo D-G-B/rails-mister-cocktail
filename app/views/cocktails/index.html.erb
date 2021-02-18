@@ -1,0 +1,21 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://source.unsplash.com/random);">
+  <div class="container">
+    <h1>The Ultimate Cocktail Experience</h1>
+    <p>Toxicity has never looked this good</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <% @cocktails.each do |cocktail| %>
+      <div class="col-4">
+        <div class="card-body card text-white bg-dark mb-3" style="max-width: 18rem;">
+        <%= link_to cocktail.name, cocktail_path(cocktail) %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<%= link_to 'New Cocktail', new_cocktail_path, class: "btn btn-primary" %>
+

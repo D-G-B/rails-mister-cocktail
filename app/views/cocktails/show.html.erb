@@ -1,0 +1,12 @@
+<p><%=@cocktail.name %></p>
+
+<ul class="list-group">
+  <% @cocktail.doses.each do |dose| %>
+    <li class="list-group-item"><%= dose.description %></li>
+  <% end %>
+</ul>
+
+
+<%= link_to "doses", new_cocktail_dose_path(@cocktail) %>
+
+dose.ingredient.name
