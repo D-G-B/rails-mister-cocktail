@@ -11,3 +11,35 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+a {
+  text-decoration: none !important;
+  color: #1EDD88;
+}
+
+body {
+  background-color: #343A40 !important;
+}
+input {
+  background-color: #343A40 !important;
+}
+
+input:focus {
+  background-color: #343A40 !important;
+  outline:none !important;
+}
+
+.form-control:focus {
+  color:#1edd88 ;
+  background-color: #343A40;
+}
+
+.list-group-item {
+  background-color:#495057 ;
+  box-shadow: 0 -2px 10px rgba(0,0,0,1);
+  margin: 1em;
+}
+
+.form-control {
+  background-color: #343A40;
+}

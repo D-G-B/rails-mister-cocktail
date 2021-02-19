@@ -1,12 +1,31 @@
-<p><%=@cocktail.name %></p>
+<div class="container">
 
-<ul class="list-group">
-  <% @cocktail.doses.each do |dose| %>
-    <li class="list-group-item"><%= dose.description %></li>
+  <h3><%=@cocktail.name %></h3>
+  <% if @cocktail.doses.length == 0 %>
+  <div class="alert-success p-3 mb-3" role="alert">Add Your dose here</div>
+  <% else %>
+    <ul class="list-group">
+      <% @cocktail.doses.each do |dose| %>
+        <li class="list-group-item"><%= dose.description %> - <%= dose.ingredient.name %></li>
+      <% end %>
+    </ul>
   <% end %>
-</ul>
+ 
+  <div>
+    <h3 class="mt-3">Add an Ingredient and its Dosage</h1>
 
+    <%= simple_form_for [@cocktail, @dose] do |f| %>
 
-<%= link_to "doses", new_cocktail_dose_path(@cocktail) %>
+      <div class="form-inputs">
+        <%= f.input :description %>
+        <%= f.association :ingredient, input_html: { class: "beautiful-dropdown" }, include_hidden: false %>
 
-dose.ingredient.name
+      <div class="form-actions">
+        <%= f.button :submit, class: "btn btn-outline-success" %>
+        <%= link_to 'Back to Your Cocktails', cocktails_path, class:"btn btn-outline-success" %>
+      </div>
+    <% end %>
+  </div>
+
+</div>
+
