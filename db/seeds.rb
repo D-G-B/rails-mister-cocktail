@@ -2,6 +2,11 @@ require 'faker'
 require 'json'
 require 'open-uri'
 Faker::UniqueGenerator.clear
+
+# puts "cleaning database"
+# Cocktail.delete_all
+# Ingredient.delete_all
+
 def random_cocktail
 	rand_cocktail_url = open("https://www.thecocktaildb.com/api/json/v1/1/random.php").read
 	rand_cocktail_json = JSON.parse(rand_cocktail_url)
@@ -11,7 +16,7 @@ def ingredient_getter
 	begin
 		ingredients_json = random_cocktail
 		ingredient_array = [ingredients_json["strIngredient1"], ingredients_json["strMeasure1"]]
-	end while ingredient_array[0].nil? && ingredient_array[1].nil?
+	end while ingredient_array[0].nil? || ingredient_array[1].nil? # && changed to ||
 	ingredient_array.map { |ingredient| ingredient.strip }
 end
 def ingredient_builder(amount)
@@ -51,4 +56,5 @@ def cocktail_builder(cocktail_amount, ingredient_amount)
 		end
 	end
 end
+
 cocktail_builder(5, 6)
